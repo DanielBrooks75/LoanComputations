@@ -19,9 +19,11 @@ def main(*args, **kwargs):
     a = int(emprunt_bancaire.mensualite)
     b = int(emprunt_bancaire.montant_total_rembourse)
     c = int(emprunt_bancaire.cout_emprunt)
-    print("Mensualite:              " + str(a))
-    print("Montant total rembourse: " + str(b))
-    print("Cout de l'emprunt:       " + str(c))
+    d = int(emprunt_bancaire.cout_emprunt_mensuel)
+    print("Mensualite:                " + str(a))
+    print("Montant total rembourse:   " + str(b))
+    print("Cout total de l'emprunt:   " + str(c))
+    print("Cout mensuel de l'emprunt: " + str(d))
     print('\n')
 
 class EmpruntBancaire():
@@ -43,8 +45,10 @@ class EmpruntBancaire():
     def calcul_montant_total_rembourse(self):
         self.montant_total_rembourse = self.mensualite * self.n_mois
 
-    def calcul_cout_emprunt(self):
+    def calcul_cout_emprunt(self, total_et_mensuel=True):
         self.cout_emprunt = self.montant_total_rembourse - self.montant_emprunt
+        if(total_et_mensuel):
+            self.cout_emprunt_mensuel = self.cout_emprunt / self.n_mois
 
 
 if __name__ == '__main__':
